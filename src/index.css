@@ -1,0 +1,139 @@
+/* styles/tailwind.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  letter-spacing: 1.5px;
+  font-family: Helvetica, sans-serif;
+
+  /* src: url('../assets/HelveticaNowDisplay-Regular.woff2') format('woff2'); */
+}
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+:root{
+  --cards:6;
+  --cardheight:50vh;
+  --cardtoppadding:1.5rem;
+  --cardmargin:4vh;
+}
+@media screen and (min-width:950px) and (max-width: 1500px) { /* Target smaller devices (adjust breakpoint as needed) */
+  :root {
+    --cardheight: 35vh; /* Override default card height for smaller devices */
+  }
+}
+
+
+::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.backgroun {
+  background-color: #00152a;
+  background-image: url("../public/imgs/Background.png");
+  background-size: contain;
+  background-position: center;
+}
+
+.herobg-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 8; /* Prevent content overflow */
+}
+
+.background-wrapper {
+  position: absolute; /* Change position to relative */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Hide overflow to create the illusion */
+}
+
+.background-wrapper::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 21, 42, 1) 0%,
+    rgba(0, 21, 42, 0) 100%
+  );
+  z-index: 9;
+}
+
+.txtcont {
+  z-index: 140;
+}
+
+.buttongradient {
+  background: linear-gradient(180deg, #27a3fe 0%, #0870eb 100%);
+}
+
+.background-wrapper::after {
+  content: ""; /* Add pseudo-element */
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 220%;
+  background-image: url("../public/imgs/languagestube.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: animate 20s linear infinite;
+}
+.card1bg {
+  background: linear-gradient(194deg, #ffffff 30.17%, #01162b 103.55%),
+    linear-gradient(0deg, #ffffff, #ffffff);
+}
+.responsivemenu {
+  z-index: 10000;
+}
+
+@media (max-width: 640px) {
+  .background-wrapper::after {
+    content: ""; /* Add pseudo-element */
+    position: absolute;
+    top: 0%;
+    left: -50%;
+    transform: translateX(
+      0%
+    ); /* Move the image back by half of its own width */
+    width: 200vw; /* Double the viewport width to extend equally on both sides */
+    height: 100vh; /* Full viewport height */
+    background-image: url("../public/imgs/languagestube.png");
+    background-size: cover;
+    background-position: center;
+    animation: animate 20s linear infinite;
+  }
+  .background-wrapper::before {
+    background: transparent;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 800px) {
+  .background-wrapper::before {
+    background: transparent;
+  }
+  .background-wrapper::after {
+    top: -30%;
+  }
+}
+
+@keyframes animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
